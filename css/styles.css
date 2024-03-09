@@ -694,6 +694,7 @@ header a {
 }
 
 .modal-label-terms-wrapper {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: start;
@@ -738,9 +739,13 @@ header a {
     border-radius: 4px;
     resize: none;
     padding: 8px 16px;
-    color: hwb(237 18% 74% / 0.4);
+    color: var(--subtle-text-color);
     font-size: 12px;
     letter-spacing: 0.04em;
+}
+
+.modal-comment::placeholder {
+    color: var(--subtle-text-color);
 }
 
 .modal-comment:focus {
@@ -755,23 +760,45 @@ header a {
     color: var(--subtle-text-color);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 
                  0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-left: 4px;
+    margin-left: -4px;
+}
+
+.modal-terms-check {
+    appearance: none;
+}
+
+.custom-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--subtle-text-color);
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: sub;
+}
+
+.modal-terms-icon {
+    position: absolute;
+    left: 2%;
+    top: 48%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-terms-check:checked + .custom-checkbox + .modal-terms-icon {
+    opacity: 1;
+}
+
+.modal-terms-check:checked + .custom-checkbox {
+    background-color: var(--primary-brand-color);
+    border-color: var(--primary-brand-color);
 }
 
 .modal-label-terms-link {
     color: var(--primary-brand-color);
     text-decoration: underline;
-}
-
-.modal-terms-check {
-    width: 16px;
-    height: 16px;
-    transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-input[type="checkbox"]:checked {
-    background-color: var(--modal-overlay-color);
-    border: 1px solid var(--pressed-state-color);
 }
 
 .modal-btn {
